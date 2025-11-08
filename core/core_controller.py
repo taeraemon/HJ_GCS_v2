@@ -147,7 +147,7 @@ class CoreController:
         if self.last_plot_index >= total_data:
             return
 
-        self.plot_group.update_plot_from_history_all(self.vehicle_data_history)
+        # self.plot_group.update_plot_from_history_all(self.vehicle_data_history)
         self.label_group.update_all(self.last_vehicle_data)
         self.button_group.update_all(self.last_vehicle_data)
 
