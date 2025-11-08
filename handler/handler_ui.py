@@ -198,38 +198,85 @@ class HandlerPlotGroup:
 
 class HandlerLabelGroup:
     def __init__(self, ui: QWidget):
+        self.line_edit_group = HandlerLineEditGroup(ui)
         self.handlers = {
-            "LB_PNID_VA_1": HandlerLabel(ui.LB_PNID_VA_1, "{:.2f}"),
-            "LB_PNID_VA_2": HandlerLabel(ui.LB_PNID_VA_2, "{:.2f}"),
-            "LB_PNID_VA_3": HandlerLabel(ui.LB_PNID_VA_3, "{:.2f}"),
-            "LB_PNID_VA_4": HandlerLabel(ui.LB_PNID_VA_4, "{:.2f}"),
-            "LB_PNID_VA_5": HandlerLabel(ui.LB_PNID_VA_5, "{:.2f}"),
-            "LB_PNID_VA_6": HandlerLabel(ui.LB_PNID_VA_6, "{:.2f}"),
-            "LB_PNID_VA_7": HandlerLabel(ui.LB_PNID_VA_7, "{:.2f}"),
-            "LB_PNID_VA_8": HandlerLabel(ui.LB_PNID_VA_8, "{:.2f}"),
+            "LB_PNID_VA_1_RAW":        HandlerLabel(ui.LB_PNID_VA_1_RAW, "{:.2f}"),
+            "LB_PNID_VA_2_RAW":        HandlerLabel(ui.LB_PNID_VA_2_RAW, "{:.2f}"),
+            "LB_PNID_VA_3_RAW":        HandlerLabel(ui.LB_PNID_VA_3_RAW, "{:.2f}"),
+            "LB_PNID_VA_4_RAW":        HandlerLabel(ui.LB_PNID_VA_4_RAW, "{:.2f}"),
+            "LB_PNID_VA_5_RAW":        HandlerLabel(ui.LB_PNID_VA_5_RAW, "{:.2f}"),
+            "LB_PNID_VA_6_RAW":        HandlerLabel(ui.LB_PNID_VA_6_RAW, "{:.2f}"),
+            "LB_PNID_VA_7_RAW":        HandlerLabel(ui.LB_PNID_VA_7_RAW, "{:.2f}"),
+            "LB_PNID_VA_8_RAW":        HandlerLabel(ui.LB_PNID_VA_8_RAW, "{:.2f}"),
+            "LB_PNID_VA_1_IDEAL":      HandlerLabel(ui.LB_PNID_VA_1_IDEAL, "{:.2f}"),
+            "LB_PNID_VA_2_IDEAL":      HandlerLabel(ui.LB_PNID_VA_2_IDEAL, "{:.2f}"),
+            "LB_PNID_VA_3_IDEAL":      HandlerLabel(ui.LB_PNID_VA_3_IDEAL, "{:.2f}"),
+            "LB_PNID_VA_4_IDEAL":      HandlerLabel(ui.LB_PNID_VA_4_IDEAL, "{:.2f}"),
+            "LB_PNID_VA_5_IDEAL":      HandlerLabel(ui.LB_PNID_VA_5_IDEAL, "{:.2f}"),
+            "LB_PNID_VA_6_IDEAL":      HandlerLabel(ui.LB_PNID_VA_6_IDEAL, "{:.2f}"),
+            "LB_PNID_VA_7_IDEAL":      HandlerLabel(ui.LB_PNID_VA_7_IDEAL, "{:.2f}"),
+            "LB_PNID_VA_8_IDEAL":      HandlerLabel(ui.LB_PNID_VA_8_IDEAL, "{:.2f}"),
+            "LB_PNID_VA_1_CALIBRATED": HandlerLabel(ui.LB_PNID_VA_1_CALIBRATED, "{:.2f}"),
+            "LB_PNID_VA_2_CALIBRATED": HandlerLabel(ui.LB_PNID_VA_2_CALIBRATED, "{:.2f}"),
+            "LB_PNID_VA_3_CALIBRATED": HandlerLabel(ui.LB_PNID_VA_3_CALIBRATED, "{:.2f}"),
+            "LB_PNID_VA_4_CALIBRATED": HandlerLabel(ui.LB_PNID_VA_4_CALIBRATED, "{:.2f}"),
+            "LB_PNID_VA_5_CALIBRATED": HandlerLabel(ui.LB_PNID_VA_5_CALIBRATED, "{:.2f}"),
+            "LB_PNID_VA_6_CALIBRATED": HandlerLabel(ui.LB_PNID_VA_6_CALIBRATED, "{:.2f}"),
+            "LB_PNID_VA_7_CALIBRATED": HandlerLabel(ui.LB_PNID_VA_7_CALIBRATED, "{:.2f}"),
+            "LB_PNID_VA_8_CALIBRATED": HandlerLabel(ui.LB_PNID_VA_8_CALIBRATED, "{:.2f}"),
 
-            "LB_PNID_TC_1": HandlerLabel(ui.LB_PNID_TC_1, "{:.2f}"),
-            "LB_PNID_TC_2": HandlerLabel(ui.LB_PNID_TC_2, "{:.2f}"),
-            "LB_PNID_TC_3": HandlerLabel(ui.LB_PNID_TC_3, "{:.2f}"),
-            "LB_PNID_TC_4": HandlerLabel(ui.LB_PNID_TC_4, "{:.2f}"),
-            "LB_PNID_TC_5": HandlerLabel(ui.LB_PNID_TC_5, "{:.2f}"),
-            "LB_PNID_TC_6": HandlerLabel(ui.LB_PNID_TC_6, "{:.2f}"),
+            "LB_PNID_TC_1_RAW":        HandlerLabel(ui.LB_PNID_TC_1_RAW, "{:.2f}"),
+            "LB_PNID_TC_2_RAW":        HandlerLabel(ui.LB_PNID_TC_2_RAW, "{:.2f}"),
+            "LB_PNID_TC_3_RAW":        HandlerLabel(ui.LB_PNID_TC_3_RAW, "{:.2f}"),
+            "LB_PNID_TC_4_RAW":        HandlerLabel(ui.LB_PNID_TC_4_RAW, "{:.2f}"),
+            "LB_PNID_TC_5_RAW":        HandlerLabel(ui.LB_PNID_TC_5_RAW, "{:.2f}"),
+            "LB_PNID_TC_6_RAW":        HandlerLabel(ui.LB_PNID_TC_6_RAW, "{:.2f}"),
+            "LB_PNID_TC_1_IDEAL":      HandlerLabel(ui.LB_PNID_TC_1_IDEAL, "{:.2f}"),
+            "LB_PNID_TC_2_IDEAL":      HandlerLabel(ui.LB_PNID_TC_2_IDEAL, "{:.2f}"),
+            "LB_PNID_TC_3_IDEAL":      HandlerLabel(ui.LB_PNID_TC_3_IDEAL, "{:.2f}"),
+            "LB_PNID_TC_4_IDEAL":      HandlerLabel(ui.LB_PNID_TC_4_IDEAL, "{:.2f}"),
+            "LB_PNID_TC_5_IDEAL":      HandlerLabel(ui.LB_PNID_TC_5_IDEAL, "{:.2f}"),
+            "LB_PNID_TC_6_IDEAL":      HandlerLabel(ui.LB_PNID_TC_6_IDEAL, "{:.2f}"),
+            "LB_PNID_TC_1_CALIBRATED": HandlerLabel(ui.LB_PNID_TC_1_CALIBRATED, "{:.2f}"),
+            "LB_PNID_TC_2_CALIBRATED": HandlerLabel(ui.LB_PNID_TC_2_CALIBRATED, "{:.2f}"),
+            "LB_PNID_TC_3_CALIBRATED": HandlerLabel(ui.LB_PNID_TC_3_CALIBRATED, "{:.2f}"),
+            "LB_PNID_TC_4_CALIBRATED": HandlerLabel(ui.LB_PNID_TC_4_CALIBRATED, "{:.2f}"),
+            "LB_PNID_TC_5_CALIBRATED": HandlerLabel(ui.LB_PNID_TC_5_CALIBRATED, "{:.2f}"),
+            "LB_PNID_TC_6_CALIBRATED": HandlerLabel(ui.LB_PNID_TC_6_CALIBRATED, "{:.2f}"),
         }
 
     def update_all(self, data: DataVehicle):
         # Update QLabel values based on data.va
         for i, value in enumerate(data.va):
-            label_name = f"LB_PNID_VA_{i+1}"
-            if label_name in self.handlers:
-                self.handlers[label_name].update(value)
+            label_name_base = f"LB_PNID_VA_{i+1}"
+            label_name_raw = f"{label_name_base}_RAW"
+            label_name_ideal = f"{label_name_base}_IDEAL"
+            label_name_calibrated = f"{label_name_base}_CALIBRATED"
+            
+            if label_name_raw in self.handlers:
+                self.handlers[label_name_raw].update(value)
+                
+                max_value = self.line_edit_group.handlers[f"LE_PNID_VA_{i+1}_RANGE"].get_value()
+                value_ideal = 1 + (((value / 65536) * 22) - 4) * ((max_value - 1) / 16)
+                self.handlers[label_name_ideal].update(value_ideal)
+                
+                value_calibrated = self.line_edit_group.handlers[f"LE_PNID_VA_{i+1}_PARAM_A"].get_value() * value + self.line_edit_group.handlers[f"LE_PNID_VA_{i+1}_PARAM_B"].get_value()
+                self.handlers[label_name_calibrated].update(value_calibrated)
 
         # Update QLabel values based on data.tc
         for i, value in enumerate(data.tc):
-            label_name = f"LB_PNID_TC_{i+1}"
-            if label_name in self.handlers:
-                self.handlers[label_name].update(value)
-
-
+            label_name_base = f"LB_PNID_TC_{i+1}"
+            label_name_raw = f"{label_name_base}_RAW"
+            label_name_ideal = f"{label_name_base}_IDEAL"
+            label_name_calibrated = f"{label_name_base}_CALIBRATED"
+            
+            if label_name_raw in self.handlers:
+                self.handlers[label_name_raw].update(value)
+                
+                # self.handlers[label_name_ideal].update(value * int(self.line_edit_group.handlers[f"LE_PNID_TC_{i+1}_RANGE"].get_value()) / 4096)
+                
+                value_calibrated = self.line_edit_group.handlers[f"LE_PNID_TC_{i+1}_PARAM_A"].get_value() * value + self.line_edit_group.handlers[f"LE_PNID_TC_{i+1}_PARAM_B"].get_value()
+                self.handlers[label_name_calibrated].update(value_calibrated)
 
 class HandlerLabel:
     def __init__(self, label_widget, fmt="{:}"):
@@ -248,3 +295,58 @@ class HandlerLabel:
             self.label.setText(self.fmt.format(value))
         except Exception as e:
             self.label.setText("ERR")
+
+class HandlerLineEditGroup:
+    def __init__(self, ui: QWidget):
+        self.handlers = {
+            "LE_PNID_VA_1_RANGE": HandlerLineEdit(ui.LE_PNID_VA_1_RANGE),
+            "LE_PNID_VA_2_RANGE": HandlerLineEdit(ui.LE_PNID_VA_2_RANGE),
+            "LE_PNID_VA_3_RANGE": HandlerLineEdit(ui.LE_PNID_VA_3_RANGE),
+            "LE_PNID_VA_4_RANGE": HandlerLineEdit(ui.LE_PNID_VA_4_RANGE),
+            "LE_PNID_VA_5_RANGE": HandlerLineEdit(ui.LE_PNID_VA_5_RANGE),
+            "LE_PNID_VA_6_RANGE": HandlerLineEdit(ui.LE_PNID_VA_6_RANGE),
+            "LE_PNID_VA_7_RANGE": HandlerLineEdit(ui.LE_PNID_VA_7_RANGE),
+            "LE_PNID_VA_8_RANGE": HandlerLineEdit(ui.LE_PNID_VA_8_RANGE),
+            "LE_PNID_VA_1_PARAM_A": HandlerLineEdit(ui.LE_PNID_VA_1_PARAM_A),
+            "LE_PNID_VA_2_PARAM_A": HandlerLineEdit(ui.LE_PNID_VA_2_PARAM_A),
+            "LE_PNID_VA_3_PARAM_A": HandlerLineEdit(ui.LE_PNID_VA_3_PARAM_A),
+            "LE_PNID_VA_4_PARAM_A": HandlerLineEdit(ui.LE_PNID_VA_4_PARAM_A),
+            "LE_PNID_VA_5_PARAM_A": HandlerLineEdit(ui.LE_PNID_VA_5_PARAM_A),
+            "LE_PNID_VA_6_PARAM_A": HandlerLineEdit(ui.LE_PNID_VA_6_PARAM_A),
+            "LE_PNID_VA_7_PARAM_A": HandlerLineEdit(ui.LE_PNID_VA_7_PARAM_A),
+            "LE_PNID_VA_8_PARAM_A": HandlerLineEdit(ui.LE_PNID_VA_8_PARAM_A),
+            "LE_PNID_VA_1_PARAM_B": HandlerLineEdit(ui.LE_PNID_VA_1_PARAM_B),
+            "LE_PNID_VA_2_PARAM_B": HandlerLineEdit(ui.LE_PNID_VA_2_PARAM_B),
+            "LE_PNID_VA_3_PARAM_B": HandlerLineEdit(ui.LE_PNID_VA_3_PARAM_B),
+            "LE_PNID_VA_4_PARAM_B": HandlerLineEdit(ui.LE_PNID_VA_4_PARAM_B),
+            "LE_PNID_VA_5_PARAM_B": HandlerLineEdit(ui.LE_PNID_VA_5_PARAM_B),
+            "LE_PNID_VA_6_PARAM_B": HandlerLineEdit(ui.LE_PNID_VA_6_PARAM_B),
+            "LE_PNID_VA_7_PARAM_B": HandlerLineEdit(ui.LE_PNID_VA_7_PARAM_B),
+            "LE_PNID_VA_8_PARAM_B": HandlerLineEdit(ui.LE_PNID_VA_8_PARAM_B),
+
+            # "LE_PNID_TC_1_RANGE": HandlerLineEdit(ui.LE_PNID_TC_1_RANGE),
+            # "LE_PNID_TC_2_RANGE": HandlerLineEdit(ui.LE_PNID_TC_2_RANGE),
+            # "LE_PNID_TC_3_RANGE": HandlerLineEdit(ui.LE_PNID_TC_3_RANGE),
+            # "LE_PNID_TC_4_RANGE": HandlerLineEdit(ui.LE_PNID_TC_4_RANGE),
+            # "LE_PNID_TC_5_RANGE": HandlerLineEdit(ui.LE_PNID_TC_5_RANGE),
+            # "LE_PNID_TC_6_RANGE": HandlerLineEdit(ui.LE_PNID_TC_6_RANGE),
+            "LE_PNID_TC_1_PARAM_A": HandlerLineEdit(ui.LE_PNID_TC_1_PARAM_A),
+            "LE_PNID_TC_2_PARAM_A": HandlerLineEdit(ui.LE_PNID_TC_2_PARAM_A),
+            "LE_PNID_TC_3_PARAM_A": HandlerLineEdit(ui.LE_PNID_TC_3_PARAM_A),
+            "LE_PNID_TC_4_PARAM_A": HandlerLineEdit(ui.LE_PNID_TC_4_PARAM_A),
+            "LE_PNID_TC_5_PARAM_A": HandlerLineEdit(ui.LE_PNID_TC_5_PARAM_A),
+            "LE_PNID_TC_6_PARAM_A": HandlerLineEdit(ui.LE_PNID_TC_6_PARAM_A),
+            "LE_PNID_TC_1_PARAM_B": HandlerLineEdit(ui.LE_PNID_TC_1_PARAM_B),
+            "LE_PNID_TC_2_PARAM_B": HandlerLineEdit(ui.LE_PNID_TC_2_PARAM_B),
+            "LE_PNID_TC_3_PARAM_B": HandlerLineEdit(ui.LE_PNID_TC_3_PARAM_B),
+            "LE_PNID_TC_4_PARAM_B": HandlerLineEdit(ui.LE_PNID_TC_4_PARAM_B),
+            "LE_PNID_TC_5_PARAM_B": HandlerLineEdit(ui.LE_PNID_TC_5_PARAM_B),
+            "LE_PNID_TC_6_PARAM_B": HandlerLineEdit(ui.LE_PNID_TC_6_PARAM_B),
+        }
+
+class HandlerLineEdit:
+    def __init__(self, line_edit_widget):
+        self.line_edit = line_edit_widget
+
+    def get_value(self):
+        return float(self.line_edit.text())
