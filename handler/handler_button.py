@@ -24,6 +24,8 @@ class HandlerButtonGroup:
             "PB_PNID_MV_2": HandlerButton(ui.PB_PNID_MV_2, kind="MV", idx=1, comm=self.comm),
             "PB_PNID_MV_3": HandlerButton(ui.PB_PNID_MV_3, kind="MV", idx=2, comm=self.comm),
             "PB_PNID_MV_4": HandlerButton(ui.PB_PNID_MV_4, kind="MV", idx=3, comm=self.comm),
+
+            "PB_SEQUENCE": HandlerButton(ui.PB_SEQUENCE, kind="SEQ", idx=0, comm=self.comm),
         }
 
     def update_all(self, data: DataVehicle):
@@ -67,6 +69,15 @@ class HandlerButton:
             next_val = 180 if self.button.isChecked() else 0
             line = f":MV;{self.idx};{next_val}#\n"
             self.comm.send_str(line)
+        
+        elif self.kind == "SEQ":
+            # LE_SEQUENCE 텍스트 값 읽어서 전송
+            value = self.comm.controller.ui.LE_SEQUENCE.text().strip()
+            sequence_line = f":SEQ;{value}#\n"
+            print('--------------------------------')
+            print(sequence_line)
+            print('--------------------------------')
+            self.comm.send_str(sequence_line)
 
     def update_state(self, kind: str, state: int):
         if kind == "SV":
